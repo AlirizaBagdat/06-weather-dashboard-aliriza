@@ -18,6 +18,7 @@
 // 'WHEN I click on a city in the search history'
 // 'THEN I am again presented with current and future conditions for that city'
 
-var apiKey = '96dbd54db42d773df996682fad6695a5'
-var city = 'London'
-var apiURL = 'api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid='+ apiKey;
+var apiKey = '96dbd54db42d773df996682fad6695a5';
+var city = 'London';
+var apiURL = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid='+apiKey;
+fetch(apiURL);
