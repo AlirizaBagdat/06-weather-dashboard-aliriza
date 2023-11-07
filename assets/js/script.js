@@ -21,4 +21,14 @@
 var apiKey = '96dbd54db42d773df996682fad6695a5';
 var city = 'London';
 var apiURL = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid='+apiKey;
-fetch(apiURL);
+fetch(apiURL)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    // document.getElementsByTagName('h2').textContent = data.city.name;
+    document.getElementById('city').textContent = data.city.name;
+    document.getElementById('temperature').textContent = data.list[0].main.temp;
+    document.getElementById('description').textContent = data.list[0].weather[0].description;
+  });
