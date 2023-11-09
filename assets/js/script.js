@@ -29,6 +29,21 @@ fetch(apiURL)
     console.log(data);
     // document.getElementsByTagName('h2').textContent = data.city.name;
     document.getElementById('city').textContent = data.city.name;
-    document.getElementById('temperature').textContent = data.list[0].main.temp;
+    
+
+    //Temperature
+    var kelvin = data.list[0].main.temp;
+    var temp = kelvin - 273.15
+    document.getElementById('temperature').textContent = temp.toFixed(1);
+
+
+
     document.getElementById('description').textContent = data.list[0].weather[0].description;
+
+    //Formatted Date
+    unixValue = data.list[0].dt_txt;
+    document.getElementById('dateToday').textContent = data.list[0].dt_txt;
+
+    var iconLogo = data.list[0].weather[0].icon
+    document.getElementById('icon').src = 'https://openweathermap.org/img/wn/'+iconLogo+'@2x.png'
   });
