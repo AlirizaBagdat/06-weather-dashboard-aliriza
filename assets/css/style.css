@@ -18,3 +18,10 @@ h1{
     
 }
 
+#searchCity{
+    display: block;
+}
+
+#future{
+    display: flex;
+}
