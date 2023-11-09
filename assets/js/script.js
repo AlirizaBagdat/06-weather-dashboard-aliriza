@@ -17,10 +17,22 @@
 // 'THEN I am presented with current and future conditions for that city and that city is added to the search history'
 // 'WHEN I click on a city in the search history'
 // 'THEN I am again presented with current and future conditions for that city'
+function storeCityName() {
+  var userCity = document.getElementById('citySearch');
+  var cityName = userCity.value;
+  console.log(cityName);
+  
+
+
+
+
+
+
 
 var apiKey = '96dbd54db42d773df996682fad6695a5';
 var city = 'London';
-var apiURL = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid='+apiKey;
+var apiURL = 'https://api.openweathermap.org/data/2.5/forecast?q='+cityName+'&appid='+apiKey;
+//User input of city name
 
 
 fetch(apiURL)
@@ -31,6 +43,7 @@ fetch(apiURL)
     console.log(data);
     // document.getElementsByTagName('h2').textContent = data.city.name;
     document.getElementById('city').textContent = data.city.name;
+    
     
 
     //Temperature
@@ -47,9 +60,13 @@ fetch(apiURL)
     formattedDate = dayjs(unixValue);
     document.getElementById('dateToday').textContent = formattedDate;
 
-    //
+    //weather icon
     var iconLogo = data.list[0].weather[0].icon
     document.getElementById('icon').src = 'https://openweathermap.org/img/wn/'+iconLogo+'@2x.png'
+
+    
   });
+
+};
 
  
