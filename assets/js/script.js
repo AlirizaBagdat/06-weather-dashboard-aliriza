@@ -63,10 +63,46 @@ fetch(apiURL)
     //weather icon
     var iconLogo = data.list[0].weather[0].icon
     document.getElementById('icon').src = 'https://openweathermap.org/img/wn/'+iconLogo+'@2x.png'
-
+      
+    
     
   });
 
-};
 
- 
+};
+fetch(apiURL)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    
+    var sectionElement = document.createElementbyId('future');
+
+    
+    
+
+
+  //For Loop
+  for (var i = 1; i < 6; i++)
+  var newDiv = document.createElement('div');
+  newDiv.classList.add('dynamic-div');
+
+  var kelvin2 = data.list[i].main.temp;
+  var temp2 = kelvin2 - 273.15;
+
+  description2 = data.list[i].weather[0].description;
+
+  unixValue2 = data.list[i].dt_txt;
+  formattedDate2 = dayjs(unixValue2);
+  
+  
+  newDiv.innerHTML = `
+  <p> Date: ${formattedDate2}°C</p>
+  <p> Description: ${description2}</p>
+  <p> Temperature: ${temp2}°C</p>
+  `;
+
+    sectionElement.appenChild(newDiv);
+  
+})
