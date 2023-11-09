@@ -21,6 +21,8 @@
 var apiKey = '96dbd54db42d773df996682fad6695a5';
 var city = 'London';
 var apiURL = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid='+apiKey;
+
+
 fetch(apiURL)
   .then(function (response) {
     return response.json();
@@ -36,14 +38,18 @@ fetch(apiURL)
     var temp = kelvin - 273.15
     document.getElementById('temperature').textContent = temp.toFixed(1);
 
-
-
+    //Description of Weather conditions
     document.getElementById('description').textContent = data.list[0].weather[0].description;
 
+    
     //Formatted Date
     unixValue = data.list[0].dt_txt;
-    document.getElementById('dateToday').textContent = data.list[0].dt_txt;
+    formattedDate = dayjs(unixValue);
+    document.getElementById('dateToday').textContent = formattedDate;
 
+    //
     var iconLogo = data.list[0].weather[0].icon
     document.getElementById('icon').src = 'https://openweathermap.org/img/wn/'+iconLogo+'@2x.png'
   });
+
+ 
